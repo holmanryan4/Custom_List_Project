@@ -8,7 +8,7 @@ namespace CustomListTests
     public class AddingToListTest
     {
         [TestMethod]
-        public void AddingToList_AddingOneItem_ToTheList_AndMakingItShows_AsTheFirstItemInTheList()
+        public void CustomList_AddingOneItem_ToTheList_AndMakingItShows_AsTheFirstItemInTheList()
         {
             //Arrange 
             CustomList<int> custom = new CustomList<int>();
@@ -20,7 +20,7 @@ namespace CustomListTests
             //Assert
             Assert.AreEqual(expected, actual);
         }
-        public void AddingToList_AddingAnItemToList_AndHaveingItShowUpInTheZeroindexSpace()
+        public void CustomList_AddingAnItemToList_AndHaveingItShowUpInTheZeroindexSpace()
         {
             //Arrange
             CustomList<int> custom = new CustomList<int>();
@@ -33,7 +33,7 @@ namespace CustomListTests
             //Assert
             Assert.AreEqual(expected, actual);
         }
-        public void AddingToList_AddingSecondItemToTheList_AndhavingTheitemShowInTheList_InSecondPlaceonList()
+        public void CustomListt_AddingSecondItemToTheList_AndhavingTheitemShowInTheList_InSecondPlaceonList()
         {
             //Arrange
             CustomList<int> custom = new CustomList<int>();
@@ -48,7 +48,7 @@ namespace CustomListTests
             //Assert
             Assert.AreEqual(expected, actual);
         }
-        public void AddingToList_AddTheSameItemTwice_MakeSureBothItemsAreAddedToTheList()
+        public void CustomList_AddTheSameItemTwice_MakeSureBothItemsAreAddedToTheList()
         {
             //Arrange
             CustomList<string> custom = new CustomList<string>();
@@ -64,7 +64,7 @@ namespace CustomListTests
             //Assert
             Assert.AreEqual(expected, actual);
         }
-        public void AddingToList_AddFiveItemsToTheList_MakeSureCompacityGrowsToEightInSize()
+        public void CustomList_AddFiveItemsToTheList_MakeSureCompacityGrowsToEightInSize()
         {
           //Arrange
             CustomList<int> customNumbers = new CustomList<int>();

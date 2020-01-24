@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="AddingToListTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RemovingFromListTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
