@@ -18,21 +18,45 @@ namespace CustomListTests
             //Act
             customNumbers.Add(4);
             customNumbers.Remove(4);
-            actual = customNumbers.Count; 
+            actual = customNumbers.Count;
             //Assert
             Assert.AreEqual(expected, actual);
         }
         public void CustomList_RemovingTwoItemsFromTheList()
         {
             //Arrange
+            CustomList<int> customNumbers = new CustomList<int>();
+            int expected = 0;
+            int actual;
+
             //Act
+            customNumbers.Add(5);
+            customNumbers.Add(6);
+            customNumbers.Remove(5);
+            customNumbers.Remove(6);
+            actual = customNumbers.Count;
+
             //Assert
+            Assert.AreEqual(expected, actual);
         }
         public void CustomList_RemoveOneOfTheDuplicatedItemsFromTheList_WithoutRemovingBothItems()
         {
             //Arrange
+            CustomList<string> schoolSupplies = new CustomList<string>();
+            int expected = ;
+            int actual;
+
             //Act
+            schoolSupplies.Add("Pen");
+            schoolSupplies.Add("Notebook");
+            schoolSupplies.Add("Pen");
+            schoolSupplies.Add("Notebook");
+            schoolSupplies.Remove[2];
+            actual = schoolSupplies.Count;
+
+
             //Assert
+            Assert.AreEqual(expected, actual);
         }
         public void CustomList_WhenRemovingAnItemFromTheList_MakeSureTheOtherItemsInTheListMovesupinTheList()
         {
@@ -55,5 +79,5 @@ namespace CustomListTests
 
     }
 
-    
+
 }
