@@ -20,6 +20,7 @@ namespace CustomListTests
             //Assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
         public void CustomList_AddingAnItemToList_AndHaveingItShowUpInTheZeroindexSpace()
         {
             //Arrange
@@ -33,6 +34,7 @@ namespace CustomListTests
             //Assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
         public void CustomListt_AddingSecondItemToTheList_AndhavingTheitemShowInTheList_InSecondPlaceonList()
         {
             //Arrange
@@ -48,6 +50,7 @@ namespace CustomListTests
             //Assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
         public void CustomList_AddTheSameItemTwice_MakeSureBothItemsAreAddedToTheList()
         {
             //Arrange
@@ -55,7 +58,7 @@ namespace CustomListTests
 
             string officeItem1 = "Desk";
             string Officeitem2 = "Desk";
-            int actual;
+            string actual;
             string expected = "Desk";
             //Act
             custom.Add(officeItem1);
@@ -64,6 +67,7 @@ namespace CustomListTests
             //Assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
         public void CustomList_AddFiveItemsToTheList_MakeSureCompacityGrowsToEightInSize()
         {
           //Arrange
