@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CustomListProject
 {
-    
+
 
     public class CustomList<T>
     {
@@ -36,7 +36,7 @@ namespace CustomListProject
             Count = 0;
             Capacity = 4;
             items = new T[Capacity];
-            
+
 
         }
 
@@ -51,27 +51,61 @@ namespace CustomListProject
                 for (int i = 0; i < Count; i++)
                 {
                     temp[i] = items[i];
-                }  
-                items = new T[Capacity];
+                }
+                items = temp;
             }
-         
+
             items[Count] = itemToAdd;
-            Count++;  
-            
+            Count++;
+
         }
         public void Remove(T itemToRemove)
         {
-           
+          
 
-            for (int i = 0; i <= Capacity; i--)
+            for (int i = 0; i < Count; i++)
             {
-                items[Count] =itemToRemove;
-            }
+                if (Equals(items[i], itemToRemove))
+                {
+                    Count--;
+                    break;
+                }
+                //else if (!Equals(items[i], itemToRemove))
+                //{
+                    
+                //}
 
-           
+                
+            }
+            for (int i = 0; i < Count; i++)
+            {
+                if (Equals(itemToRemove, items[i]))
+                {
+                    T[] temp = new T[Capacity];
+                    for (int j = 0; j < Count; j++)
+                    {
+                        temp[j] = items[i+1];
+                    }
+                    items = temp;
+                }
+            }
             
-            Count--;
-            
+            //if (!Equals(Count, itemToRemove))
+            //{
+
+            //    T[] temp = new T[Capacity];
+
+            //    for (int i = 0; i > Count; i++)
+            //    {
+            //        temp[0] = items[1];
+            //    }
+            //}
+
+
+
+
+
+
         }
 
     }

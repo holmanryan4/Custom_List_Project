@@ -72,21 +72,22 @@ namespace CustomListTests
         {
             //Arrange
             CustomList<string> schoolSupplies = new CustomList<string>();
-            string expected = "Notebook";
+            string expected = "Folder";
             string actual;
 
             //Act
             schoolSupplies.Add("Pen");
             schoolSupplies.Add("Notebook");
-            schoolSupplies.Add("Pen");
+            schoolSupplies.Add("Pencil");
             schoolSupplies.Add("Folder");
 
-            schoolSupplies.Remove("Pen");
-            actual = schoolSupplies[0];
+            schoolSupplies.Remove("Notebook");
+            actual = schoolSupplies[2];
             //Assert
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
+        
         public void CustomList_MakeSureItemsThatAreNotInTheList_CanNotBeRemoved()
         {
             //Arrange
@@ -104,6 +105,7 @@ namespace CustomListTests
             actual = schoolSupplies.Count;
             //Assert
             Assert.AreEqual(expected, actual);
+           
         }
         [TestMethod]
         public void CustomList_WhenRemovingFiveitemsFromTheList_makeSureTheCapacityDoesNotShrink()

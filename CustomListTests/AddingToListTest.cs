@@ -21,7 +21,7 @@ namespace CustomListTests
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void CustomList_AddingAnItemToList_AndHaveingItShowUpInTheZeroindexSpace()
+        public void CustomList_AddingAnItemToList_AndHavingItShowUpInTheZeroindexSpace()
         {
             //Arrange
             CustomList<int> custom = new CustomList<int>();
