@@ -26,10 +26,10 @@ namespace CustomListTests
             //Arrange
             CustomList<int> custom = new CustomList<int>();
             int actual;
-            int expected = 7;
+            int expected = 12;
 
             //Act
-            custom.Add(7);
+            custom.Add(12);
             actual = custom[0];
             //Assert
             Assert.AreEqual(expected, actual);
@@ -39,13 +39,13 @@ namespace CustomListTests
         {
             //Arrange
             CustomList<int> custom = new CustomList<int>();
-            int firstNum = 12;
-            int secondNum = 4;
+            int firstNumber = 12;
+            int secondNumber = 4;
             int actual;
             int expected = 4;
             //Act
-            custom.Add(firstNum);
-            custom.Add(secondNum);
+            custom.Add(firstNumber);
+            custom.Add(secondNumber);
             actual = custom[1];
             //Assert
             Assert.AreEqual(expected, actual);
@@ -93,3 +93,4 @@ namespace CustomListTests
         // add the same thing twice and make sure its in the list twice
     }
 }
+    

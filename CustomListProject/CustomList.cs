@@ -13,8 +13,8 @@ namespace CustomListProject
 
         //Member Variables (HAS A)
         T[] items;
-        public int Count = 0;
-        public int Capacity = 4;
+        public int Count;
+        public int Capacity;
         //Indexer
 
         public T this[int index]
@@ -33,22 +33,42 @@ namespace CustomListProject
         //Constructor
         public CustomList()
         {
+            Count = 0;
+            Capacity = 4;
             items = new T[Capacity];
+            
+
         }
 
         //Member Methods (CAN DO)
         public void Add(T itemToAdd)
         {
-            
-            items[0] = itemToAdd;
-
-            if(Count == Capacity)
+            if (Count == Capacity)
             {
-                items = new T[Capacity * 2];
+                Capacity = Capacity * 2;
+                T[] temp = new T[Capacity];
+
+                for (int i = 0; i < Count; i++)
+                {
+                    temp[i] = items[i];
+                }
+                items = new T[Capacity];
             }
+            
+           
+            
+            items[Count] = itemToAdd;
+            Count++;
+          
+
+            
+           
+            
         }
         public void Remove(T itemToRTemove)
         {
+           // items[Count] = itemToRTemove;
+            //items[1] = itemToRTemove;
             
         }
 
