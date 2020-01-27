@@ -51,24 +51,26 @@ namespace CustomListProject
                 for (int i = 0; i < Count; i++)
                 {
                     temp[i] = items[i];
-                }
+                }  
                 items = new T[Capacity];
             }
-            
-           
-            
+         
             items[Count] = itemToAdd;
-            Count++;
-          
-
-            
-           
+            Count++;  
             
         }
-        public void Remove(T itemToRTemove)
+        public void Remove(T itemToRemove)
         {
-           // items[Count] = itemToRTemove;
-            //items[1] = itemToRTemove;
+           
+
+            for (int i = 0; i <= Capacity; i--)
+            {
+                items[Count] =itemToRemove;
+            }
+
+           
+            
+            Count--;
             
         }
 

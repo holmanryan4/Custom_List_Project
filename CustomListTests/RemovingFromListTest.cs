@@ -67,12 +67,12 @@ namespace CustomListTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        //[ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void CustomList_WhenRemovingAnItemFromTheList_MakeSureTheOtherItemsInTheListMovesupinTheList()
         {
             //Arrange
             CustomList<string> schoolSupplies = new CustomList<string>();
-            
+            string expected = "Notebook";
             string actual;
 
             //Act
@@ -81,10 +81,10 @@ namespace CustomListTests
             schoolSupplies.Add("Pen");
             schoolSupplies.Add("Folder");
 
-            schoolSupplies.Remove("Folder");
-            actual = schoolSupplies[3];
+            schoolSupplies.Remove("Pen");
+            actual = schoolSupplies[0];
             //Assert
-            
+            Assert.AreEqual(expected, actual);
         }
         [TestMethod]
         public void CustomList_MakeSureItemsThatAreNotInTheList_CanNotBeRemoved()
