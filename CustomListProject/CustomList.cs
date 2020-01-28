@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +9,13 @@ namespace CustomListProject
 {
 
 
-    public class CustomList<T>
+    public class CustomList<T> : IEnumerable
     {
 
         //Member Variables (HAS A)
         T[] items;
+        
+     
         public int Count;
         public int Capacity;
         //Indexer
@@ -28,7 +31,10 @@ namespace CustomListProject
                 items[index] = value;
 
             }
+            
         }
+        
+
 
         //Constructor
         public CustomList()
@@ -36,7 +42,10 @@ namespace CustomListProject
             Count = 0;
             Capacity = 4;
             items = new T[Capacity];
+            
+            
 
+            
 
         }
 
@@ -59,54 +68,87 @@ namespace CustomListProject
             Count++;
 
         }
-        public void Remove(T itemToRemove)
-        {
-          
+        public bool Remove(T itemToRemove)
+        { 
 
-            for (int i = 0; i < Count; i++)
+            bool removed = false;
+            T[] temp = new T[Capacity];
+
+            int j = 0;
+            for (int i = j; i < Count; i++)
             {
-                if (Equals(items[i], itemToRemove))
+                if (Equals(items[i], itemToRemove) && (i == j))
                 {
-                    Count--;
-                    break;
+                    removed = true;
                 }
-                //else if (!Equals(items[i], itemToRemove))
-                //{
-                    
-                //}
-
-                
-            }
-            for (int i = 0; i < Count; i++)
-            {
-                if (Equals(itemToRemove, items[i]))
+                else
                 {
-                    T[] temp = new T[Capacity];
-                    for (int j = 0; j < Count; j++)
-                    {
-                        temp[j] = items[i+1];
-                    }
+                   
+                    temp[j] = items[i];
+                    j++;
+                }
+                if (removed)
+                {
+                    
+                    Count--;
                     items = temp;
                 }
-            }
-            
-            //if (!Equals(Count, itemToRemove))
-            //{
+                for (int i = 0; i < Count; i++)
+                {
+                    if (Equals(items[i], itemToRemove))
+                    {
+                        Count--;
+                        break;
+                    }
 
-            //    T[] temp = new T[Capacity];
-
-            //    for (int i = 0; i > Count; i++)
-            //    {
-            //        temp[0] = items[1];
-            //    }
-            //}
-
-
-
-
-
+                }
+                return removed;
 
         }
+        //public CustomList<T> Zipper(CustomList<T> ListToZip)
+        //{
+
+        //}
+        public IEnumerator GetEnumerator()
+        {
+            for (int i = 0; i < Count; i++)
+            {
+                yield return items[i];
+            }
+        }
+        
 
     }
+
+
+     //for (int i = 0; i<Count; i++)
+     //       {
+     //           if (Equals(items[i], itemToRemove))
+     //           {
+     //               Count--;
+     //               break;
+     //           }
+                
+
+                
+     //       }
+     //       for (int i = 0; i<Count; i++)
+     //       {
+                
+     //           if (Equals(itemToRemove, items[i]))
+     //           {
+     //               items[i] = items[i + 1];
+     //               T[] temp = new T[Capacity];
+     //               for (int j = 0; j<Count; j++)
+     //               {
+     //                   temp[j] = items[j + 1];
+                        
+     //               }
+     //               items = temp;
+     //               items[Count] = itemToRemove;
+     //              Count--;
+     //           }
+     //       }
+            
 }
+
