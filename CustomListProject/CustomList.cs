@@ -11,13 +11,15 @@ namespace CustomListProject
 
     public class CustomList<T> : IEnumerable
     {
+         
 
         //Member Variables (HAS A)
         T[] items;
-        
-     
+
+        //public int Count { get { return Count; } }
         public int Count;
         public int Capacity;
+        
         //Indexer
 
         public T this[int index]
@@ -31,9 +33,9 @@ namespace CustomListProject
                 items[index] = value;
 
             }
-            
+
         }
-        
+
 
 
         //Constructor
@@ -42,10 +44,10 @@ namespace CustomListProject
             Count = 0;
             Capacity = 4;
             items = new T[Capacity];
-            
-            
 
-            
+
+
+
 
         }
 
@@ -69,86 +71,99 @@ namespace CustomListProject
 
         }
         public bool Remove(T itemToRemove)
-        { 
-
+        {
             bool removed = false;
-            T[] temp = new T[Capacity];
 
-            int j = 0;
-            for (int i = j; i < Count; i++)
+            for (int i = 0; i < Count; i++)
             {
-                if (Equals(items[i], itemToRemove) && (i == j))
+                if (Equals(items[i], itemToRemove))
                 {
-                    removed = true;
+                    Count--;
+                    break;
+                }
+
+            }
+            for (int i = 0; i < Count; i++)
+            {
+                T[] temp = new T[Capacity];
+                if (Equals(itemToRemove, items[i]))
+                {
+                    items[i] = items[i + 1];
+
+                    for (int j = 0; j < Count; j++)
+                    {
+                        temp[j] = items[j + 1];
+
+                    }
+                    items = temp;
+                    items[Count] = itemToRemove;
+
                 }
                 else
                 {
-                   
-                    temp[j] = items[i];
-                    j++;
+                    temp[i] = items[i];
                 }
                 if (removed)
                 {
-                    
                     Count--;
                     items = temp;
                 }
-                for (int i = 0; i < Count; i++)
-                {
-                    if (Equals(items[i], itemToRemove))
-                    {
-                        Count--;
-                        break;
-                    }
+            }
 
-                }
-                return removed;
+            return removed;
 
         }
-        //public CustomList<T> Zipper(CustomList<T> ListToZip)
-        //{
 
-        //}
+       
         public IEnumerator GetEnumerator()
         {
             for (int i = 0; i < Count; i++)
             {
                 yield return items[i];
             }
+            yield return "No more items in list";
         }
         
+        
+
+        public override string ToString()
+        {
+            //StringBuilder toString = new StringBuilder();
+            
+            return base.ToString();
+        }
+        public static CustomList<T> operator+ (CustomList<T> odd, CustomList<T> even)
+        {
+            CustomList<T> Zipper = new CustomList<T>();
+            for (int i = 0; i < odd.Count; i++)
+            {
+                Zipper.Add(odd[i]);
+
+            }
+            for (int i = 0; i < even.Count; i++)
+            {
+                Zipper.Add(even[i]);
+            }
+            return Zipper;
+        }
+        public static CustomList<T> operator- (CustomList<T> odd, CustomList<T> even)
+        {
+            CustomList<T> Zipper = new CustomList<T>();
+            for (int i = 0; i < odd.Count; i++)
+            {
+                Zipper.Remove(odd[i]);
+
+            }
+            for (int i = 0; i < even.Count; i++)
+            {
+                Zipper.Remove(even[i]);
+            }
+            return Zipper;
+        }
 
     }
-
-
-     //for (int i = 0; i<Count; i++)
-     //       {
-     //           if (Equals(items[i], itemToRemove))
-     //           {
-     //               Count--;
-     //               break;
-     //           }
-                
-
-                
-     //       }
-     //       for (int i = 0; i<Count; i++)
-     //       {
-                
-     //           if (Equals(itemToRemove, items[i]))
-     //           {
-     //               items[i] = items[i + 1];
-     //               T[] temp = new T[Capacity];
-     //               for (int j = 0; j<Count; j++)
-     //               {
-     //                   temp[j] = items[j + 1];
-                        
-     //               }
-     //               items = temp;
-     //               items[Count] = itemToRemove;
-     //              Count--;
-     //           }
-     //       }
-            
+    
 }
+
+    
 
