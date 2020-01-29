@@ -16,9 +16,24 @@ namespace CustomListProject
         //Member Variables (HAS A)
         T[] items;
 
-        //public int Count { get { return Count; } }
-        public int Count;
-        public int Capacity;
+        //public int count { get { return count; } }
+        public int Count
+        {
+            get
+            {
+                return count;
+            }
+        }
+        public int Capacity
+        {
+            get
+            {
+                return capacity;
+            }
+        }
+
+        int count;
+        int capacity;
         
         //Indexer
 
@@ -41,9 +56,9 @@ namespace CustomListProject
         //Constructor
         public CustomList()
         {
-            Count = 0;
-            Capacity = 4;
-            items = new T[Capacity];
+            count = 0;
+            capacity = 4;
+            items = new T[capacity];
 
 
 
@@ -54,10 +69,10 @@ namespace CustomListProject
         //Member Methods (CAN DO)
         public void Add(T itemToAdd)
         {
-            if (Count == Capacity)
+            if (count == capacity)
             {
-                Capacity = Capacity * 2;
-                T[] temp = new T[Capacity];
+                capacity = capacity * 2;
+                T[] temp = new T[capacity];
 
                 for (int i = 0; i < Count; i++)
                 {
@@ -66,58 +81,56 @@ namespace CustomListProject
                 items = temp;
             }
 
-            items[Count] = itemToAdd;
-            Count++;
+            items[count] = itemToAdd;
+            count++;
 
         }
         public bool Remove(T itemToRemove)
-        {
-            bool removed = false;
+        {   
+            T[] temp = new T[capacity];
 
-            for (int i = 0; i < Count; i++)
+            bool removed = CheckForRemoval(itemToRemove);
+            if (removed == true)
             {
-                if (Equals(items[i], itemToRemove))
+                for (int i = 0, t = 0; i < count; i++, t++)
                 {
-                    Count--;
-                    break;
-                }
 
+                    if (Equals(itemToRemove, items[i]))
+                    {
+                        i++;
+                        temp[t] = items[i];
+                    }
+                    else
+                    {
+                        temp[t] = items[i];
+                    }
+                }
+                count--;
+                items = temp;
             }
-            for (int i = 0; i < Count; i++)
+            else
             {
-                T[] temp = new T[Capacity];
+                throw new ArgumentOutOfRangeException("Not today satan");
+            }
+            return removed;
+        }
+        bool CheckForRemoval(T itemToRemove)
+        {
+            for (int i = 0; i < count; i++)
+            {
                 if (Equals(itemToRemove, items[i]))
                 {
-                    items[i] = items[i + 1];
-
-                    for (int j = 0; j < Count; j++)
-                    {
-                        temp[j] = items[j + 1];
-
-                    }
-                    items = temp;
-                    items[Count] = itemToRemove;
-
-                }
-                else
-                {
-                    temp[i] = items[i];
-                }
-                if (removed)
-                {
-                    Count--;
-                    items = temp;
+                    return true;
                 }
             }
-
-            return removed;
-
+            return false;
         }
+        
 
        
         public IEnumerator GetEnumerator()
         {
-            for (int i = 0; i < Count; i++)
+            for (int i = 0; i < count; i++)
             {
                 yield return items[i];
             }
@@ -128,19 +141,20 @@ namespace CustomListProject
 
         public override string ToString()
         {
-            //StringBuilder toString = new StringBuilder();
+            
             
             return base.ToString();
         }
         public static CustomList<T> operator+ (CustomList<T> odd, CustomList<T> even)
         {
+       
             CustomList<T> Zipper = new CustomList<T>();
-            for (int i = 0; i < odd.Count; i++)
+            for (int i = 0; i < odd.count; i++)
             {
                 Zipper.Add(odd[i]);
 
             }
-            for (int i = 0; i < even.Count; i++)
+            for (int i = 0; i < even.count; i++)
             {
                 Zipper.Add(even[i]);
             }
@@ -149,12 +163,12 @@ namespace CustomListProject
         public static CustomList<T> operator- (CustomList<T> odd, CustomList<T> even)
         {
             CustomList<T> Zipper = new CustomList<T>();
-            for (int i = 0; i < odd.Count; i++)
+            for (int i = 0; i < odd.count; i++)
             {
                 Zipper.Remove(odd[i]);
 
             }
-            for (int i = 0; i < even.Count; i++)
+            for (int i = 0; i < even.count; i++)
             {
                 Zipper.Remove(even[i]);
             }

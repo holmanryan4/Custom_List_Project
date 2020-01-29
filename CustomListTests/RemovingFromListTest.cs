@@ -87,13 +87,12 @@ namespace CustomListTests
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void CustomList_MakeSureItemsThatAreNotInTheList_CanNotBeRemoved()
         {
             //Arrange
             CustomList<string> schoolSupplies = new CustomList<string>();
-            int expected = 4;
-            int actual;
+           
 
             //Act
             schoolSupplies.Add("Pen");
@@ -102,9 +101,9 @@ namespace CustomListTests
             schoolSupplies.Add("Folder");
 
             schoolSupplies.Remove("Computer");
-            actual = schoolSupplies.Count;
+            
             //Assert
-            Assert.AreEqual(expected, actual);
+           
            
         }
         [TestMethod]
@@ -112,7 +111,7 @@ namespace CustomListTests
         {
             //Arrange
             CustomList<int> customNumbers = new CustomList<int>();
-            int expected =8;
+            int expected = 8;
             int actual;
 
             //Act
