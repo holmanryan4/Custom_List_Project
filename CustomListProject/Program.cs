@@ -15,7 +15,7 @@ namespace CustomListProject
             customListOne.Add("4");
             customListOne.Add("2");
             customListOne.Remove("2");
-            //Console.WriteLine(customListOne.Count);
+            Console.WriteLine(customListOne.Count);
             Console.ReadLine();
             customListOne.ToString();
 

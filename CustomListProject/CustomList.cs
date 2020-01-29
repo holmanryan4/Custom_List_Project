@@ -18,8 +18,8 @@ namespace CustomListProject
         int count;
         int capacity;
        
-        //public int count { get { return count; } }
-        int Count
+        
+        public int Count
         {
             get
             {
@@ -36,13 +36,13 @@ namespace CustomListProject
 
 
         //Indexer
-
+        
         public T this[int index]
         {
             
             get
             {
-              if (index < 0 && index >= items.count)
+              if (index < 0 && index >= (items.count))
               {
                     throw new IndexOutOfRangeException("Try Again");
                     

@@ -38,7 +38,7 @@ namespace CustomListTests
 
             customNumbers.Remove(5);
             customNumbers.Remove(6);
-            actual = customNumbers.count;
+            actual = customNumbers.Count;
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -67,7 +67,7 @@ namespace CustomListTests
         }
 
         [TestMethod]
-        //[ExpectedException(typeof(ArgumentOutOfRangeException))]
+        
         public void CustomList_WhenRemovingAnItemFromTheList_MakeSureTheOtherItemsInTheListMovesupinTheList()
         {
             //Arrange
