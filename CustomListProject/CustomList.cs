@@ -11,13 +11,15 @@ namespace CustomListProject
 
     public class CustomList<T> : IEnumerable
     {
-         
+
 
         //Member Variables (HAS A)
         T[] items;
-
+        int count;
+        int capacity;
+       
         //public int count { get { return count; } }
-        public int Count
+        int Count
         {
             get
             {
@@ -32,27 +34,36 @@ namespace CustomListProject
             }
         }
 
-        int count;
-        int capacity;
-        
+
         //Indexer
 
         public T this[int index]
         {
+            
             get
             {
+              if (index < 0 && index >= items.count)
+              {
+                    throw new IndexOutOfRangeException("Try Again");
+                    
+              }
                 return items[index];
+
+
             }
             set
             {
+                if (index < 0 || index >= items.count)
+                    throw new IndexOutOfRangeException("Try Again");
                 items[index] = value;
 
             }
-
+            
+             
+            
         }
-
-
-
+        
+       
         //Constructor
         public CustomList()
         {

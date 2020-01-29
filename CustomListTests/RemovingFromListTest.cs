@@ -38,7 +38,7 @@ namespace CustomListTests
 
             customNumbers.Remove(5);
             customNumbers.Remove(6);
-            actual = customNumbers.Count;
+            actual = customNumbers.count;
 
             //Assert
             Assert.AreEqual(expected, actual);
